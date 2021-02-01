@@ -17,8 +17,9 @@
 	<include resource="org/springframework/boot/logging/logback/file-appender.xml" />
 	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
 	
-	<logger name="org.springframework" level="DEBUG" />
-	<root level="INFO">
+	<logger name="es.microservices.tests.orders" level="INFO"/>
+	<logger name="org.springframework" level="ERROR" />
+	<root level="WARN">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="FILE" />
 	</root>

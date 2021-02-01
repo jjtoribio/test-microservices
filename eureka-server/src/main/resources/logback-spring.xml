@@ -17,6 +17,7 @@
 	<include resource="org/springframework/boot/logging/logback/file-appender.xml" />
 	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
 	
+	<logger name="es.microservices.tests.eureka.server" level="INFO"/>
 	<logger name="org.springframework" level="ERROR" />
 	<root level="WARN">
 		<appender-ref ref="CONSOLE" />
