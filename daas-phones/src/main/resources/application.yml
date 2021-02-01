@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: daas-phones
+
+server:
+  port: 8082 

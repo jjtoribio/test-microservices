@@ -1,0 +1,18 @@
+info:
+  version: '@project.version@'
+  Description: Config Server
+server:
+  port: 8888
+  
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jjtoribio/test-config
+          skipSslValidation: true
+
+logging:
+  file: /tmp/${spring.application.name}.log
+  level:
+    root: info

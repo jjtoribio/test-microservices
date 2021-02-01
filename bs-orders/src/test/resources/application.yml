@@ -1,0 +1,42 @@
+springdoc:
+  api-docs:
+    enabled: true    
+  swagger-ui.path: /swagger-ui.html
+
+server:
+  servlet:
+    context-path: /
+  error:
+    include-message: always    
+    
+spring:
+  jackson:
+    default-property-inclusion: non-null
+    deserialization:
+      fail-on-unknown-properties: false
+  sleuth:
+    reactor:
+      enabled: true
+  zipkin:
+    enabled: false
+  cloud:
+    discovery:
+      enabled: false
+
+es:
+  microservices:
+    tests:
+      orders:
+        orders-config:
+          base-url: http://orders:8083
+          endpoint-url: /orders
+        phones-config:          
+          base-url: http://phones:8082
+          endpoint-url: /phones
+
+logging:
+  file: /tmp/${spring.application.name}-test.log  
+  level:    
+    es.microservices: info    
+    root: info 
+    

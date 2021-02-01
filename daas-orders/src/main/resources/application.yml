@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: daas-orders  
+
+server:
+  port: 8083

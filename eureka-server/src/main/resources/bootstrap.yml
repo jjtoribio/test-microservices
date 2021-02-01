@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: eureka-server
+  cloud:
+    config:
+      allowOverride: true
+      failFast: true
+      overrideNone: true
+      overrideSystemProperties: true
+      uri: ${SPRING_CONFIG_URI:http://localhost:8888}
