@@ -2,6 +2,8 @@
 
 En este repositorio se encuentra todos los microservicios necesarios para cumplir con la especificación. También se añade un fichero docker-compose para poder levantar un base de datos MongoDB que es utilizado por alguno de estos servicios.
 
+
+
 La solución esta formada por 5 microservicios:
 
 - **config-server**. Para la gestión de la configuración (levanta en el puerto 8888)
@@ -58,46 +60,55 @@ La solución esta formada por 5 microservicios:
 
 ## Dockerización
 
-Todos los servicios disponen de un fichero Dockerfile para la creación de un contenedor docker que permita la ejecución del servicio
+Todos los servicios disponen de un fichero Dockerfile para la creación de un contenedor docker que permita la ejecución del servicio.
+
+Antes de construir las  imagenes docker, será necesario construir con **maven** cada uno de los proyectos de manera independiente, o bien directamente desde el directorio raiz, en el cual existe un pom.xml "padre" que permite construir todos los modulos a la vez.
+
+***Construcción con maven***
+
+```bash
+$ > cd .
+$ &gt; mvn clean install
+```
 
 **_config-server_**:
 
 ```bash
-cd ./config-server
-docker build -t demo/config-server .
-docker run -p 8888:8888 demo/config-server
+$ &gt; cd ./config-server
+$ > docker build -t demo/config-server .
+$ &gt; docker run -p 8888:8888 demo/config-server
 ```
 
 **_eureka-server_**:
 
 ```bash
-cd ./eureka-server
-docker build -t demo/eureka-server .
-docker run -p 8761:8761 demo/eureka-server
+$ > cd ./eureka-server
+$ > docker build -t demo/eureka-server .
+$ > docker run -p 8761:8761 demo/eureka-server
 ```
 
 **_daas-phones_**:
 
 ```bash
-cd ./daas-phones
-docker build -t demo/daas-phones .
-docker run -p 8082:8082 demo/daas-phones
+$ > cd ./daas-phones
+$ > docker build -t demo/daas-phones .
+$ > docker run -p 8082:8082 demo/daas-phones
 ```
 
 ***daas-orders***:
 
 ```bash
-cd ./daas-orders
-docker build -t demo/daas-orders . 
-docker run -p 8083:8083 demo/daas-orders
+$ > cd ./daas-orders
+$ > docker build -t demo/daas-orders . 
+$ > docker run -p 8083:8083 demo/daas-orders
 ```
 
 ***bs-orders***:
 
 ```bash
-cd ./bs-orders
-docker build -t demo/bs-orders . 
-docker run -p 8081:8081 demo/bs-orders
+$ > cd ./bs-orders
+$ > docker build -t demo/bs-orders . 
+$ > docker run -p 8081:8081 demo/bs-orders
 ```
 
 ## **MongoDB**
@@ -105,15 +116,15 @@ docker run -p 8081:8081 demo/bs-orders
 Para levantar la base de datos MongoDB
 
 ```bash
-cd .
-docker-compose up -d --build 
+$ > cd .
+$ > docker-compose up -d --build 
 ```
 
 Para detener la base datos (y eliminarlo por completo).
 
 ```bash
-cd ..
-docker-compose down
+$ &gt; cd .
+$ &gt; docker-compose down
 ```
 
 ### Repositorio de configuración
